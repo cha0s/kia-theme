@@ -1758,7 +1758,6 @@ div.content[role=main] {
     }
 
     > div.panestack-title {
-      display: inline;
       border-style: none;
       margin: 0px;
       padding-right: 15px;
@@ -1768,17 +1767,20 @@ div.content[role=main] {
     }
 
     > div.menuarea {
-      display: inline;
       margin: 0px;
       > *, form {
         display: inline;
       }
       .spacer {
-        margin: 0px;
+        display: inline-block;
+        margin: 0 0 5px 0;
       }
       .dropdown {
         // Lol reddit bugfix.
         cursor: pointer;
+      }
+      #REScommentNavToggle {
+        display: block;
       }
       span, a {
         @include font-focus;
