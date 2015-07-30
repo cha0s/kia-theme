@@ -66,8 +66,8 @@ $nm-darken-factor: 100% - $nm-brightness;
   @return darken($color, $nm-darken-factor * ($factor / 100%));
 }
 
-$nm-link-color: lighten(#14ce1a, $nm-darken-factor);
-$nm-link-color-visited: lighten(#d803ff, $nm-darken-factor * .75);
+$nm-link-color: lighten(#1ae4b8, $nm-darken-factor);
+$nm-link-color-visited: lighten(#af02cf, $nm-darken-factor * .75);
 
 // ********* Size configuration. ********* //
 $full_min_width: 800px;   // Minimum width screen we support without scrollbar.
@@ -122,8 +122,10 @@ $tag_color_discussion: #1c9328;
 $tag_color_off_topic: #5600bf;
 $tag_color_ethics: #9e0000;
 $tag_color_industry: #b1af9c;
+$tag_color_bias: #000000;
 $tag_color_censorship: #000000;
 $tag_color_socjus: #faaafa;
+$tag_color_meetups: #ffe100;
 
 $side_header_color: #888;
 $side_header_font_size: 16px;
@@ -587,7 +589,14 @@ $btn-padding: 12px;
       text-decoration: line-through;
     }
     .linkflair-bias & {
-      @include std-link-flair($tag_color_censorship);
+      @include std-link-flair($tag_color_bias);
+    }
+    .linkflair-meetups & {
+      @include std-link-flair($tag_color_meetups);
+      color: black !important;
+      .res-nightmode & {
+        color: black !important;
+      }
     }
   }
 }
@@ -888,7 +897,6 @@ html {
   // Sometimes reddit insists on giving us custom logos so we need two selectors.
   @at-root a#header-img.default-header, a#header-img-a {
     @include reset-box;
-    @include nm-low-opacity;
 
     @include tooltip("This is what Kotaku's logo actually used to look like.", 20%, 90%, 80%);
 
@@ -912,7 +920,6 @@ html {
   // The reddit name element is used for the logo.
   // An logo asset is used instead which should be changed at will, manually.
   > span.redditname {
-    @include nm-low-opacity;
     @include reset-box;
     margin: 0px;
 
@@ -1622,8 +1629,6 @@ div.side div.md {
     }
 
     font-size: 11px;
-
-    @include nm-low-opacity;
 
     a {
       color: #fff;
