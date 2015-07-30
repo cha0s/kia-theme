@@ -2065,7 +2065,8 @@ div.side ul.content {
 
 /* Special Flairs and Shit */
 .commentarea .author:after{color:#0D0D0D}
-.commentarea .author[href$="/user/TheHat2"]:after{content:" [Hatman]"}
+.commentarea .author[href$="/user/TheHat2"]:after{content:" [Old Hatman]"}
+.commentarea .author[href$="/user/IAmSupernova"]:after{content:" [Commander Nova]"}
 
 // Logo author.
 .author[href$="/user/Kai_the_creator"] ~ span.flair {
