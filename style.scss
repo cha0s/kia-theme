@@ -1220,6 +1220,8 @@ div.side {
 
     // General sidebar content.
     > div.titlebox {
+      background-color: transparent;
+
       h1.redditname {
         // Just takes up space. People know this is KotakuInAction.
         display: none;
