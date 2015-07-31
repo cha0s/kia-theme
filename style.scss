@@ -1358,6 +1358,15 @@ div.side {
           margin-bottom: $sidebar-padding;
         }
       }
+
+      .sr_style_toggle {
+        @include focus-box;
+        font-size: $font-size-blur;
+        padding: $sidebar-padding;
+        margin: 0px;
+        padding-bottom: 0px;
+        border-bottom: 0px;
+      }
     }
   }
 
