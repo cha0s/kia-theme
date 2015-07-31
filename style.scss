@@ -2084,12 +2084,56 @@ div.side ul.content {
   overflow:hidden;
 }
 
-/* Special Flairs and Shit */
-.commentarea .author:after{color:#0D0D0D}
-.commentarea .author[href$="/user/TheHat2"]:after{content:" [Old Hatman]"}
-.commentarea .author[href$="/user/IAmSupernova"]:after{content:" [Commander Nova]"}
+.thing .tagline .author {
 
-// Logo author.
-.author[href$="/user/Kai_the_creator"] ~ span.flair {
-  @include gold-flair;
+  // Dark normally.
+  &:after {
+    color: nm_darken($nm-link-color-visited) !important;
+  }
+
+  &.submitter, &.moderator {
+    font-weight: bold;
+    padding: 1px 4px !important;
+    border-radius: 3px;
+
+    &:after {
+      color: #FFF !important;
+    }
+
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+
+  &.submitter {
+    background-color: #0055DF !important;
+
+    &:hover {
+      background-color: #4E7EAB !important;
+    }
+  }
+
+  &.moderator {
+    background-color: #228822 !important;
+
+    &:hover {
+      background-color: #134913 !important;
+    }
+  }
+
+  /* Special Flairs and Shit */
+  &[href$="/user/TheHat2"]:after {
+    content: " [Old Hatman]";
+  }
+  &[href$="/user/cha0s"]:after {
+    content: " [Code Monkey]";
+  }
+  &[href$="/user/IAmSupernova"]:after {
+    content: " [Commander Nova]";
+  }
+
+  // Logo author.
+  &[href$="/user/Kai_the_creator"] ~ span.flair {
+    @include gold-flair;
+  }
 }
