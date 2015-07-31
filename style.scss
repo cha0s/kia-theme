@@ -1346,13 +1346,14 @@ div.side {
         padding: $sidebar-padding;
         margin: 0px;
         padding-bottom: 0px;
-        border-bottom: 0px;
+        border-bottom: none;
+        border-top: none;
 
         + div.tagline {
           @include focus-box;
           overflow: hidden;
           padding: $sidebar-padding;
-          border-top: 0px;
+          border-top: none;
           display: block;
           margin: 0px;
           margin-bottom: $sidebar-padding;
@@ -1667,6 +1668,15 @@ div.side div.md {
     > *:first-child {
       margin-top: 0px;
     }
+  }
+
+  // Style "last" h1's in blockquote's without the bottom margin. This handles
+  // the blockquotes that only have h1's, like CURRENT HAPPENINGS and
+  // MODERATION LOG
+  blockquote h1:last-child {
+    margin-top: 2px !important;
+    margin-bottom: 0;
+    line-height: 1em;
   }
 }
 
