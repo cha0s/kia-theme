@@ -88,7 +88,7 @@ $sidebar-width: ($sidebar-padding * 2 + $sidebar-inner-width);
 
 $tabmenu-inner-height: 28px;
 $tabmenu-pad: 4px;
-$tabmenu-cat-margin: 12px;
+$tabmenu-cat-margin: 14px;
 $tabmenu-height: ($tabmenu-pad + $tabmenu-inner-height + $tabmenu-pad);
 $tabmenu-min-width: ($full_min_width - $sidebar-width);
 $tabmenu-tag-filter-btn-width: 105px; // First button in tabmenu.
@@ -993,11 +993,6 @@ html {
       li a {
         padding-left: 4px;
         padding-right: 4px;
-      }
-      // Wiki
-      li:nth-child(7) {
-        // Separate wiki button with 2 units of padding.
-        margin-left: $tabmenu-cat-margin - $tabmenu-pad;
       }
       // Hide promoted, it's not like the admins allow any promoted links here anyway.
       li:nth-child(8) {
