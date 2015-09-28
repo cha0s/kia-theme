@@ -1288,14 +1288,8 @@ div.side {
         padding-bottom: 0px;
         border-bottom: 0px;
         span.number {
-          body.subscriber &::before {
-            display: inline-block;
-            float: right;
-            margin-bottom: $sidebar-padding;
-            content: 'You’re a subscriber!';
-          }
           &::after {
-            content: ' ethical violations.';
+            content: ' causes for UN concern';
           }
         }
         span.word {
@@ -1318,7 +1312,7 @@ div.side {
         }
         span.number {
           &::after {
-            content: ' navy sealions here, kiddo.';
+            content: ' sanctioned sealions';
           }
         }
         .word {
