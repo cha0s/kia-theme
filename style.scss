@@ -1091,6 +1091,11 @@ div.side {
     overflow-y: scroll;
   }
 
+  .login-form {
+    border: none;
+    margin-bottom: 1em;
+  }
+
   // Remove ugly borders.
   .sidecontentbox .content {
     border-style: none;
