@@ -25,10 +25,11 @@ $asset_icon_main_top: asset_url('icon-main-top', 'png');
 $asset_logo: asset_url('logo', 'png');
 $asset_logo_sr: asset_url('logo-sr', 'png');
 $asset_mars_top: asset_url('mars-top', 'png');
-$asset_mars_btm: asset_url('footer-hat-ice-t', 'jpg');
+$asset_mars_btm: asset_url('kia-tb-water-hat', 'jpg');
 $asset_texture: asset_url('texture', 'png');
 $asset_toolbox_edit: asset_url('toolbox-edit', 'png');
 $asset_vivian_search: asset_url('vivian-search', 'png');
+$asset_vivian_sidebar: asset_url('viv-kotaku-jp', 'png');
 $asset_vivian_night: asset_url('vivian-night', 'png');
 $asset_vote_up: asset_url('vote-up', 'png');
 $asset_vote_down: asset_url('vote-down', 'png');
@@ -630,6 +631,31 @@ $btn-padding: 12px;
   @include box-shadow(-10px, 15px, 15px, 0px, rgba(0, 0, 0, 0.4));
 }
 
+@mixin totalitarian-common {
+  border-left: 2px solid red;
+  border-right: 2px solid red;
+  display: block;
+  margin-left: 5px;
+  padding: 5px;
+}
+
+
+@mixin totalitarian-before {
+  @include totalitarian-common;
+  border-top: 2px solid red;
+  content: "WARNING: If you comment or post on KotakuInAction (regardless of the content), a number of other subreddits' moderators will automatically ban you from their subreddits. (/r/OffMyChest, /r/Rape (advice for victims of sexual violence), /r/NaturalHair, and others)";
+  font-size: 1.3em;
+}
+
+@mixin totalitarian-after {
+  @include totalitarian-common;
+  border-bottom: 2px solid red;
+  content: "Totalitarians generally aren't known for their finesse.";
+  font-size: 1em;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
 // Nightmode hacks.
 .res-nightmode {
   // !important because of RES.
@@ -652,6 +678,12 @@ $btn-padding: 12px;
   .midcol > div, div.expando-button,
   div.thing p.title a:first-child::before {
     opacity: $nm-general-opacity;
+  }
+
+  // Report/other action forms.
+  .action-form {
+    background-color: #222;
+    border-color: #000;
   }
 }
 
@@ -1036,7 +1068,10 @@ html {
     right: $res-navtop-right;
     top: $srarea-height;
 
-    background-color: transparent;
+    background-color: transparent !important;
+    * {
+      background-color: transparent !important;
+    }
 
     #userbarToggle {
       background-color: transparent;
@@ -1158,6 +1193,22 @@ div.side {
       body.res & {
         margin-top: 5px;
       }
+    }
+
+    // RES fix.
+    form#search, #header {
+      z-index: 999;
+    }
+
+    // Sidebar image.
+    @at-root .sidebox.submit.submit-link::before {
+      background-image: url($asset_vivian_sidebar);
+      background-repeat: no-repeat;
+      background-size: contain;
+      content: " ";
+      display: block;
+      height: 357px;
+      width: 100%;
     }
 
     // We convert this to a nice button instead of ugly arrow.
@@ -1717,6 +1768,30 @@ div.content[role=main] {
       }
     }
 
+    // Warning about totalitarian subreddits.
+    form.usertext {
+
+      .usertext-edit {
+
+        &::before {
+          @include totalitarian-before;
+        }
+
+        .md, .res-commentBoxes & .markdownEditor-wrapper {
+          margin-top: 0;
+
+          &::before {
+            @include totalitarian-after;
+          }
+        }
+
+        // Play nice with RES.
+        .res & .md::before {
+          display: none;
+        }
+      }
+    }
+
     .new-comment .usertext-body {
       margin: 5px 0;
       padding: 0 8px;
@@ -1877,9 +1952,23 @@ div.content[role=main] {
   }
 
   // Submit page.
-  body.submit-page & h1:first-child {
-    display: none;
+  @at-root body.submit-page {
+    & h1:first-child {
+      display: none;
+    }
+
+    .formtabs-content {
+
+      &::before {
+        @include totalitarian-before;
+      }
+
+      > .spacer:first-child::before {
+        @include totalitarian-after;
+      }
+    }
   }
+
   @at-root form.submit.content {
     @include reset-box;
     @include focus-box;
@@ -2146,4 +2235,9 @@ div.side ul.content {
   &[href$="/user/Kai_the_creator"] ~ span.flair {
     @include gold-flair;
   }
+}
+
+// Yep.
+.give-gold {
+  display: none;
 }
