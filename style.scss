@@ -1339,8 +1339,11 @@ div.side {
         padding-bottom: 0px;
         border-bottom: 0px;
         span.number {
+          &::before {
+            content: '$';
+          }
           &::after {
-            content: ' causes for UN concern';
+            content: ' in Patreon donations';
           }
         }
         span.word {
@@ -1363,7 +1366,7 @@ div.side {
         }
         span.number {
           &::after {
-            content: ' sanctioned sealions';
+            content: ' Undertale fans';
           }
         }
         .word {
